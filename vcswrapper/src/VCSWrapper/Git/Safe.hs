@@ -34,6 +34,8 @@ module VCSWrapper.Git.Safe (
     , module VCSWrapper.Git.Types
 ) where
 
+import Control.Applicative
+import Prelude
 import System.Directory
 
 import Control.Monad.Trans
