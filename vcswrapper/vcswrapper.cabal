@@ -1,5 +1,5 @@
 name: vcswrapper
-version: 0.1.5
+version: 0.1.6
 cabal-version: >=1.8
 build-type: Simple
 license: GPL
@@ -28,13 +28,13 @@ library
         VCSWrapper.Mercurial
         VCSWrapper.Git.Safe
     build-depends:
-        base >=4.0.0.0 && <4.10,
+        base >=4.0.0.0 && <4.11,
         containers >=0.5.5.1 && <0.6,
         directory >=1.1.0.0 && <1.4,
         hxt >=9.1.2 && <9.4,
         mtl >=2.0.1.0 && <2.3,
         parsec >=3.1.1 && <3.2,
-        process >=1.0.1.5 && <1.5,
+        process >=1.0.1.5 && <1.7,
         filepath >=1.2.0.0 && <1.5,
         split >=0.2.2 && <0.3,
         text >=0.11.1.5 && <1.3
@@ -57,13 +57,13 @@ library
 executable vcswrapper
     main-is: Main.hs
     build-depends:
-        base >=4.0.0.0 && <4.10,
+        base >=4.0.0.0 && <4.11,
         containers >=0.5.5.1 && <0.6,
         directory >=1.1.0.0 && <1.4,
         hxt >=9.1.2 && <9.4,
         mtl >=2.0.1.0 && <2.3,
         parsec >=3.1.1 && <3.2,
-        process >=1.0.1.5 && <1.5,
+        process >=1.0.1.5 && <1.7,
         filepath >=1.2.0.0 && <1.5,
         split >=0.2.2 && <0.3,
         text >=0.11.1.5 && <1.3
