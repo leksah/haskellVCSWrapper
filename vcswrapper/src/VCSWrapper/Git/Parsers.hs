@@ -31,6 +31,7 @@ import Data.Text (Text)
 import qualified Data.Text as T
        (isPrefixOf, pack, lines, unpack, splitOn)
 import Control.Applicative ((<$>))
+import Data.Maybe (listToMaybe)
 
 -- | Parse the status of a Git repo. Expects command @git status --porcelain@.
 parseStatus :: Text -- ^ Output of @git status --porcelain@.
@@ -43,8 +44,8 @@ parseStatus status = [ GITStatus filepath Modified | (_:x:_:filepath) <- lines, 
         lines = map T.unpack $ T.splitOn "\n" status
 
 -- | Parse the output of @git branch@.
-parseBranches :: Text -> (Text, [Text]) -- ^ (currently checked out branch, list of all other branches)
-parseBranches string = (head [T.pack branchname | ('*':_:branchname) <- lined],
+parseBranches :: Text -> (Maybe Text, [Text]) -- ^ (currently checked out branch, list of all other branches)
+parseBranches string = (listToMaybe [T.pack branchname | ('*':_:branchname) <- lined],
     [T.pack branchname | (' ':' ':branchname) <- lined])
     where
     lined = map T.unpack $ T.lines string

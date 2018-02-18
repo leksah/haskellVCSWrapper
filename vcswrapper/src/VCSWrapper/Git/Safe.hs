@@ -118,7 +118,7 @@ simpleLog mbBranch = do
     return (fmap parseSimpleLog e)
 
 {- | Get all local branches. Executes @git branch@. -}
-localBranches :: Ctx (Either VCSException (Text, [Text])) -- ^ (currently checked out branch, list of all other branches)
+localBranches :: Ctx (Either VCSException (Maybe Text, [Text])) -- ^ (currently checked out branch, list of all other branches)
 localBranches = do
     e <- gitExec' "branch" [] []
     return (fmap parseBranches e)

@@ -121,7 +121,7 @@ simpleLog mbBranch = do
 
 
 {- | Get all local branches. Executes @git branch@. -}
-localBranches :: Ctx (Text, [Text]) -- ^ (currently checked out branch, list of all other branches)
+localBranches :: Ctx (Maybe Text, [Text]) -- ^ (currently checked out branch, list of all other branches)
 localBranches = do
     o <- gitExec "branch" [] []
     return $ parseBranches o
