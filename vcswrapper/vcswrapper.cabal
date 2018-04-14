@@ -28,6 +28,7 @@ library
         VCSWrapper.Mercurial
         VCSWrapper.Git.Safe
     build-depends:
+        aeson >=1.1.2.0 && <1.4,
         base >=4.0.0.0 && <4.11,
         containers >=0.5.5.1 && <0.6,
         directory >=1.1.0.0 && <1.4,
@@ -57,6 +58,7 @@ library
 executable vcswrapper
     main-is: Main.hs
     build-depends:
+        aeson >=1.1.2.0 && <1.4,
         base >=4.0.0.0 && <4.11,
         containers >=0.5.5.1 && <0.6,
         directory >=1.1.0.0 && <1.4,

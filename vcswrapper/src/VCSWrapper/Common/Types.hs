@@ -1,5 +1,5 @@
 {-# LANGUAGE FlexibleInstances, GeneralizedNewtypeDeriving, DeriveDataTypeable #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, DeriveGeneric #-}
 -----------------------------------------------------------------------------
 --
 -- Module      :  Common.Types
@@ -30,15 +30,20 @@ module VCSWrapper.Common.Types (
     ,isLocked
 ) where
 
-import Control.Monad.Reader
-import Data.Typeable (Typeable)
-import Control.Exception (Exception)
-import Data.Text (Text)
 import Control.Applicative (Applicative)
+import Control.Exception (Exception)
+import Control.Monad.Reader
+import Data.Aeson (ToJSON, FromJSON)
+import Data.Typeable (Typeable)
+import Data.Text (Text)
+import GHC.Generics (Generic)
 
 -- | Available VCS types implemented in this package.
 data VCSType = SVN | GIT | Mercurial
-    deriving (Show,Read, Eq)
+    deriving (Show, Read, Eq, Generic)
+
+instance ToJSON VCSType
+instance FromJSON VCSType
 
 -- | Status of a file managed by the respective VCS.
 data Status = SVNStatus FilePath Modification IsLocked
@@ -93,13 +98,19 @@ data Config = Config
     , configPath :: Maybe FilePath -- ^ Path to the vcs executable. If 'Nothing', the PATH environment variable will be search for a matching executable.
     , configAuthor :: Maybe Author -- ^ Author to be used for different VCS actions. If 'Nothing', the default for the selected repository will be used.
     , configEnvironment :: [(Text, Text)] -- ^ List of environment variables mappings passed to the underlying VCS executable.
-    } deriving (Show, Read)
+    } deriving (Show, Read, Generic)
+
+instance ToJSON Config
+instance FromJSON Config
 
 -- | Author to be passed to VCS commands where applicable.
 data Author = Author
     { authorName :: Text -- ^ Name of the author.
     , authorEmail :: Maybe Text -- ^ Email address of the author.
-    } deriving (Show, Read)
+    } deriving (Show, Read, Generic)
+
+instance ToJSON Author
+instance FromJSON Author
 
 {- | Context for all VCS commands.
 
