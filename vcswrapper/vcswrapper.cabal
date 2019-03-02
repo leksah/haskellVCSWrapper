@@ -29,8 +29,9 @@ library
         VCSWrapper.Git.Safe
     build-depends:
         aeson >=1.1.2.0 && <1.5,
-        base >=4.0.0.0 && <4.12,
-        containers >=0.5.5.1 && <0.6,
+        base >=4.0.0.0 && <4.13,
+        base-compat >=0.10.5 && <0.11,
+        containers >=0.5.5.1 && <0.7,
         directory >=1.1.0.0 && <1.4,
         hxt >=9.1.2 && <9.4,
         mtl >=2.0.1.0 && <2.3,
@@ -59,8 +60,9 @@ executable vcswrapper
     main-is: Main.hs
     build-depends:
         aeson >=1.1.2.0 && <1.5,
-        base >=4.0.0.0 && <4.12,
-        containers >=0.5.5.1 && <0.6,
+        base >=4.0.0.0 && <4.13,
+        base-compat >=0.10.5 && <0.11,
+        containers >=0.5.5.1 && <0.7,
         directory >=1.1.0.0 && <1.4,
         hxt >=9.1.2 && <9.4,
         mtl >=2.0.1.0 && <2.3,

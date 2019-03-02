@@ -33,6 +33,7 @@ module VCSWrapper.Common.Types (
 import Control.Applicative (Applicative)
 import Control.Exception (Exception)
 import Control.Monad.Reader
+import Control.Monad.Fail.Compat (MonadFail)
 import Data.Aeson (ToJSON, FromJSON)
 import Data.Typeable (Typeable)
 import Data.Text (Text)
@@ -122,7 +123,7 @@ instance FromJSON Author
     >    runVcs config $ initDB False
 -}
 newtype Ctx a = Ctx (ReaderT Config IO a)
-    deriving (Functor, Applicative, Monad, MonadIO, MonadReader Config)
+    deriving (Functor, Applicative, Monad, MonadIO, MonadFail, MonadReader Config)
 
 -- | Creates a new 'Config' with a list of environment variables.
 makeConfigWithEnvironment :: Maybe FilePath -- ^ Path to the main directory of the repository. E.g. for Git: the directory of the repository containing the @.git@ config directory.
