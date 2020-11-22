@@ -30,7 +30,7 @@ library
     build-depends:
         aeson >=1.1.2.0 && <1.6,
         base >=4.0.0.0 && <4.15,
-        base-compat >=0.10.5 && <0.11,
+        base-compat >=0.10.5 && <0.12,
         containers >=0.5.5.1 && <0.7,
         directory >=1.1.0.0 && <1.4,
         hxt >=9.1.2 && <9.4,
@@ -61,7 +61,7 @@ executable vcswrapper
     build-depends:
         aeson >=1.1.2.0 && <1.6,
         base >=4.0.0.0 && <4.15,
-        base-compat >=0.10.5 && <0.11,
+        base-compat >=0.10.5 && <0.12,
         containers >=0.5.5.1 && <0.7,
         directory >=1.1.0.0 && <1.4,
         hxt >=9.1.2 && <9.4,
